@@ -15,5 +15,11 @@ runtime:
 ui:
   bundle:
     url: ./build/ui-bundle.zip
+  supplemental_files:
+  - path: ui.yml
+    contents: |
+      static_files:
+      - .nojekyll
+  - path: .nojekyll
 urls:
   html_extension_style: indexify
