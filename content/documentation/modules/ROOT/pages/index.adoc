@@ -6,6 +6,55 @@ Hi! This is a WIP. I had never heard of Antora before and decided to give it a w
 
 == Overview
 
+Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past six years. These are representative samples, not everything that I have worked on.
+
+Some of the links used are pointing to copies of documents in the Internet Archive Wayback Machine.
+This is done so that I can link to documents that have been removed from their original location,
+or have been modified.
+
+== Examples
+
+=== Preparing data for an anlytical database
+
+This is a guide for someone who has already gone through the basics of starting the database, creating a
+"Hello World" table and loading a few rows of data.
+
+In the NYPD Complaint Data guide I guide a new user of the ClickHouse analytical database through
+investigating the structure and content of an input file containing a dataset, determining the proper
+schema for the database table that the data will be stored in, how to transform the data while
+ingesting it, and how to run some interesting queries against that data.
+
+Most guides in this product space tell the reader "type this, click that, clean up". I find that
+type of guide to be boring, and I wonder if the method presented is a "good" method or the simplest
+for the author to write.
+
+Database guides often use very simple datasets that are guaranteed to work. This is necessary for the
+very first tutorial type content designed to get the product installed and the very first table created.
+Beyond that point, the reader needs to learn about how to understand their data and the database so
+that they can make proper decisions. When I wrote this guide I had almost no experience with the
+product. My mentor recommended that I "figure it out and write down everything that I learned". This
+first example is the result of that advice.
+
+Here is an example from the NYPD Complaint Data document that I believe is a good way to present
+a system for learning about the data, and properly configuring the database table to store the data
+efficiently:
+
+> In order to figure out what types should be used for the fields it is necessary to know what the data looks like. For example, the field JURISDICTION_CODE is a numeric: should it be a UInt8, or an Enum, or is Float64 appropriate?.footnote:1[The query is not shown here]
+>
+> The query response shows that the JURISDICTION_CODE fits well in a UInt8.
+>
+> Similarly, look at some of the String fields and see if they are well suited to being DateTime or LowCardinality(String) fields.
+>
+> For example, the field PARKS_NM is described as "Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)". The names of parks in New York City may be a good candidate for a LowCardinality(String):.footnote:1[]
+>
+> The dataset in use at the time of writing has only a few hundred distinct parks and playgrounds in the PARK_NM column. This is a small number based on the LowCardinality recommendation to stay below 10,000 distinct strings in a LowCardinality(String) field.
+
+The document continues to teach a few more very important techniques for analyzing and manipulating
+data, and then finishes up with some queries and advice on what to learn next.
+
+https://web.archive.org/web/20230317111529/https://clickhouse.com/docs/en/getting-started/example-datasets/nypd_complaint_data[ClickHouse guide to analyzing NYPD complaint data]
+
+
 Documentation at Google.com integrating their on-prem Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
 
 Tutorial at the Kubernetes website This was removed from the Kubernetes website when we changed the Elastic license.  Webarchive is linked, you can download and open in a browser.  Markdown is in this pull request.
