@@ -1,5 +1,34 @@
 = Sample Documentation
 
+April 18th 2024
+
+Hi! This is a WIP. I had never heard of Antora before and decided to give it a whirl.
+
 == Overview
 
-words and links
+Documentation at Google.com integrating their on-prem Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
+
+Tutorial at the Kubernetes website This was removed from the Kubernetes website when we changed the Elastic license.  Webarchive is linked, you can download and open in a browser.  Markdown is in this pull request.
+
+== Blogs
+Get System Logs and Metrics into Elasticsearch
+Upgrading the Elastic Stack: Planning for succes
+Integrating JMS with Elasticsearch Service in Elastic Cloud using Logstash
+Kubernetes and Docker overview of auto discovery and video demo, and the associated GitHub repo.  I think this may be the first thing I wrote at Elastic.
+Monitoring an app deplyed in Kubernetes
+Logs and Metrics with Beats System Modules
+Documentation at third party sites
+
+
+== Elastic Docs
+New Elastic Cloud tutorial built with Cloud tech writers and Cloud PM around using a development language client.
+
+Customer success pages at elastic.co. These pages started out as a text dump of how I approached consulting engagements when I worked in services designing fault and performance management systems for customers.  It has grown to become customer journey guides, tips from support, videos from the Elastic education organization, and onboarding advice. There is quite a bit of fluff added in here by the Marketing folks after I left Elastic, but the content written with the Support Engineers and the content around planning upgrades is legit.
+
+== Poster
+
+A poster that I used to teach IBM SAs and customers about using Machine Learning with observability data.
+
+
+
+
