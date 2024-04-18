@@ -25,6 +25,16 @@ image:{img-ci-status}[CI Status (GitLab CI), link={url-ci-pipelines}]
 This fork of the Antora Default UI is being used by me to learn about Antora by documenting {url-writing-samples}[some of my work].
 
 
+The GitHub workflow is from Antora docs (I added the `npx gulp bundle`, which seems to be needed)
+
+Locally I use `make` to manage Docker when I want to preview the content. The Docker files, compose files, and the Makefile in this repo are from https://blog.swwomm.com/2020/10/antora-quick-start-tutorial.html
+
+```
+npx gulp bundle
+make antora.build
+make antora.run
+```
+
 == Antora Code of Conduct
 
 The Antora project and its project spaces are governed by our https://gitlab.com/antora/antora/-/blob/HEAD/CODE-OF-CONDUCT.adoc[Code of Conduct].
