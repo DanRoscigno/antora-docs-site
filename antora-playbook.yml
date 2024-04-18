@@ -1,0 +1,19 @@
+# antora-playbook.yml
+site:
+  robots: allow
+  start_page: sample-docs::index.adoc
+  title: Writing Samples
+  url: https://docs.example.com
+content:
+  sources:
+  - url: ./
+    branches: HEAD
+    start_paths:
+    - content/*
+runtime:
+  cache_dir: ./build/cache
+ui:
+  bundle:
+    url: ./build/ui-bundle.zip
+urls:
+  html_extension_style: indexify
