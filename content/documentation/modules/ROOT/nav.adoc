@@ -1,2 +1,2 @@
 * xref:index.adoc#_welcome[Welcome!]
-* xref:docs-as-code.adoc[]
+* xref:docs-as-code.adoc[Docs-As-Code]

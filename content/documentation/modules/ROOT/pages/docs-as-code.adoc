@@ -1,5 +1,38 @@
-= Docs-As-Code
+= Single sourcing documentation code snippets from end to end tests
 
-== Overview
+== Two lifecycles for technical documentation
 
-words and links
+=== Documenting a feature
+
+[[complaint-driven-pipeline-diagram]]
+.Complaint Driven Writing Pipeline
+[mermaid]
+----
+flowchart TD
+
+C[Write Docs]-->
+E[Test docs by hand]
+E -->G
+G{Pass}
+G -- yes -->J
+G -- no -->C
+J[/Publish Docs/] -->
+M[/Breaking change/] -->
+P[/Receive Complaint/]
+--> E
+----
+
+
+[[CI-driven-pipeline-diagram]]
+.CI Test Driven Writing Pipeline
+[mermaid]
+----
+flowchart TD
+
+C[/Publish CI Test/]-->
+E[Include Test in Docs]-->
+J[/Publish Docs/] -->
+M[/Breaking change/] -->
+P[/CI Fails/] -- Update the tests -->C
+C
+----
