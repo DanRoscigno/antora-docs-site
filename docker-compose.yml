@@ -2,6 +2,17 @@ version: '3'
 
 services:
 
+  antora:
+    build:
+      context: .
+      dockerfile: antora.dockerfile
+    environment:
+      CI: 'true'
+    ports:
+    - 8051:8080
+    volumes:
+    - .:/srv/docs
+
   ui:
     build:
       context: .
