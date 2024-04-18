@@ -3,7 +3,7 @@ site:
   robots: allow
   start_page: sample-docs::index.adoc
   title: Writing Samples
-  url: https://docs.example.com
+  url: https://danroscigno.github.io/antora-docs-site/
 content:
   sources:
   - url: ./
