@@ -1,5 +1,9 @@
 = Sample Documentation
 
+April 18th 2024
+
+Hi! This is a WIP. I had never heard of Antora before and decided to give it a whirl.
+
 == Overview
 
 Documentation at Google.com integrating their on-prem Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
