@@ -78,15 +78,15 @@ data used in the tests don't make their way into the documentation.
 === The fix
 
 * Treat the docs as code.
-* As end to end docs (tutorials, quick starts, how to guides) are designed they
+* As end to end docs (tutorials, quick starts, how-to guides) are designed, they
 should be written as test plans.
 * Automate the test plan.
 * Write the doc, but instead of copy/pasting the code snippets (SQL in my case)
 into the docs, import the snippets directly from the automated test.
 * Run the test suite on a regular basis.
-* As tests fail get the code fixed if the failure indicates a bug, or update the
+* As tests fail, get the code fixed if the failure indicates a bug, or update the
 test to include the new behavior of the system. The update to the test should cause
-an update to the documentation as the doc system is pulling the code snippets
+an update to the documentation, as the doc system is pulling the code snippets
 from the tests.
 
 === Example
@@ -111,7 +111,7 @@ AS SELECT * FROM FILES (
 ----
 
 Yesterday I would have copied the above out of the SQL client I used to run
-the query and pasted it into a Markdown file. But today I would instead use
+the query and pasted it into a Markdown file. But today, I would instead use
 this syntax to grab the above from the test specification like so:
 
 [,markdown]
@@ -141,9 +141,9 @@ browser ad blockers. I am using a React component that collects feedback and wri
 cookies. Each week a
 https://github.com/StarRocks/starrocks/blob/main/.github/workflows/weekly-docs-feedback.yml[scheduled GitHub workflow^,target="_blank"]
 collects the feedback from PostHog and generates an issue with the reader feedback. The same workflow queries Algolia
-for the top successful searches, and the top failed searches in the docs. This informs the documentation team and
+for the top successful searches and failed searches in the docs. This informs the documentation team and
 product management on which features or commands are important to readers.
 
 == CI checks
 
-Link checking, Markdown linting, and build tests are done on each commit to documentation pull requests by the https://github.com/StarRocks/starrocks/blob/main/.github/workflows/ci-doc-checker.yml#L62-L135[doc CI job^,target="_blank"].
+Link checking, Markdown linting, and build tests are performed on each commit to documentation pull requests by the https://github.com/StarRocks/starrocks/blob/main/.github/workflows/ci-doc-checker.yml#L62-L135[doc CI job^,target="_blank"].
