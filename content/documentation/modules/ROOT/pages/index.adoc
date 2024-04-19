@@ -13,8 +13,8 @@ or have been modified.
 This example is designed to be followed step by step to integrate the database with a specific
 third-party visualization tool.
 
-When I wrote this guide I pulled out the reusable content (the ports used by the database and where to
-find the connection details in the commercial UI) into reusable snippets and these are imported wherever
+When I wrote this guide, I pulled out the reusable content (the ports used by the database and where to
+find the connection details in the commercial UI) into reusable snippets. These are now imported wherever
 needed. Imports have always been available in Asciidoc, but this was missing in Docusaurus until recently.
 
 Key features of this guide:
@@ -22,36 +22,36 @@ Key features of this guide:
 * Identify the goal and show the end result.
 * Provide a step-by-step procedure.
 * Include all the information necessary to complete the task.
-* Limit links out to download files necessary to implement the integration and a sample dataset used to verify the integration.
+* Limit links to those needed for downloading files to implement the integration and a sample dataset used to verify the integration.
 
 The rest of the visualization tool integrations at ClickHouse follow the same pattern.
 
-Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button". I deviated from this because the community often had problems with using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
+Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button". I deviated from this because the community often had problems using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
 
 https://clickhouse.com/docs/en/integrations/superset[Superset Integration^,target="_blank"]
 
 == How-To and Explanation
 
 This is a guide for someone who has already gone through the basics of starting the database, creating a
-"Hello World" table and loading a few rows of data. This document exemplifies one place where I
-combine explanation with a how-to guide. This is meant to both teach someone how to load data, and
+"Hello World" table, and loading a few rows of data. This document exemplifies one place where I
+combine explanation with a how-to guide. This is meant to both teach someone how to load data and
 explain what they should be considering while they work through the process.
 
-In the NYPD Complaint Data guide I guide a new user of the ClickHouse analytical database through
+In the NYPD Complaint Data documentation, I guide a new user of the ClickHouse analytical database through
 investigating the structure and content of an input file containing a dataset, determining the proper
 schema for the database table that the data will be stored in, how to transform the data while
 ingesting it, and how to run some interesting queries against that data.
 
-Most guides in this product space tell the reader "type this, click that, clean up". I find that
+Most guides in this product space tell the reader "Type this, click that, clean up". I find that
 type of guide to be boring, and I wonder if the method presented is a "good" method or the simplest
 for the author to write.
 
 Database guides often use very simple datasets that are guaranteed to work. This is necessary for the
-very first tutorial type content designed to get the product installed and the very first table created.
+very first tutorial-type content designed to get the product installed and the very first table created.
 Beyond that point, the reader needs to learn about how to understand their data and the database so
 that they can make proper decisions. When I wrote this guide I had almost no experience with the
-product. My mentor recommended that I "figure it out and write down everything that I learned". This
-first example is the result of that advice.
+product. My mentor recommended that I "Write down everything that I learn while working through the
+process". This first example is the result of that advice.
 
 Here is an example from the NYPD Complaint Data document that I believe is a good way to present
 a system for learning about the data, and properly configuring the database table to store the data
@@ -59,7 +59,7 @@ efficiently:
 
 NOTE: The queries are not shown in the excerpt.
 
-> In order to figure out what types should be used for the fields it is necessary to know what the data looks like. For example, the field JURISDICTION_CODE is a numeric: should it be a UInt8, or an Enum, or is Float64 appropriate?
+> To figure out what types should be used for the fields it is necessary to know what the data looks like. For example, the field JURISDICTION_CODE is a numeric: should it be a UInt8, or an Enum, or is Float64 appropriate?
 >
 > The query response shows that the JURISDICTION_CODE fits well in a UInt8.
 >
@@ -70,13 +70,13 @@ NOTE: The queries are not shown in the excerpt.
 > The dataset in use at the time of writing has only a few hundred distinct parks and playgrounds in the PARK_NM column. This is a small number based on the LowCardinality recommendation to stay below 10,000 distinct strings in a LowCardinality(String) field.
 
 The document continues to teach a few more very important techniques for analyzing and manipulating
-data, and then finishes up with some queries and advice on what to learn next.
+data and then finishes up with some queries and advice on what to learn next.
 
 https://web.archive.org/web/20230317111529/https://clickhouse.com/docs/en/getting-started/example-datasets/nypd_complaint_data[ClickHouse guide to analyzing NYPD complaint data^,target="_blank"]
 
 == Solution guides
 
-The documentation at Elastic was traditionally product based. This meant that the documentation was split up into these separate sets:
+The documentation at Elastic was traditionally product-based. This meant that the documentation was split up into these separate sets:
 
 * Search engine
 * Visualization tool
@@ -85,13 +85,13 @@ The documentation at Elastic was traditionally product based. This meant that th
 
 This separation of the documentation meant that the reader had to know which tools they needed, what terminology each of the tools used to describe the same idea, and which tool to pick if there were multiple options for a specific task. This issue hit me personally when I was trying to set up a new feature. I searched for the feature and the search engine documentation came up first in the results, so I followed that guide. I had to use pages of JSON configuration to get the integration working. I was speaking with some of the other writers about how difficult this was to configure, and the writer for the visualization tool told me that there was a button to configure that. This conversation led to regular knowledge sharing among the writers and the course developers so that we could provide end-to-end scenario-based documentation that highlighted the best way to accomplish tasks. There are several solution guides, and I worked on these:
 
-https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html[Getting started with Observability^,target="_blank"]
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html[Getting Started with Observability^,target="_blank"]
 
 https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html[Monitor your Kubernetes Infrastructure^,target="_blank"]
 
 https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM^,target="_blank"]
 
-== Use-case based How-To guides
+== Use-case-based How-To guides
 
 I am not a fan of using four lines of data to introduce the reader to a database product capable of
 ingesting and analyzing billions of rows of data or analyzing those billions of rows of data where they
@@ -103,10 +103,10 @@ that align with the needs of the community:
 * Analyzing data in Apache Iceberg
 * Analyzing data in Apache Hudi
 
-There is some complexity to configuring the integrations with cloud storage, Apache Iceberg, and Apache Hudi. To make this easier for the reader I wrote Docker compose files to deploy MinIO, Iceberg, and Hudi. I think that this is appropriate, as the reader that wants to use external storage with StarRocks is likely familiar with the external storage. In addition to the compose files I documented the settings necessary, and in the case of the Hudi integration I submitted a pull request to the Hudi maintainers to improve their compose-based tutorial.
+There is some complexity to configuring the integrations with cloud storage, Apache Iceberg, and Apache Hudi. To make this easier for the reader I wrote Docker compose files to deploy MinIO, Iceberg, and Hudi. I think that this is appropriate, as the reader who wants to use external storage with StarRocks is likely familiar with the external storage. In addition to the compose files I documented the settings necessary, and in the case of the Hudi integration I submitted a pull request to the Hudi maintainers to improve their compose-based tutorial.
 
 The "Basics" Quick Start is a step-by-step guide with no explanation until the end. There are some
-complicated manipulations of the data during loading. In the document I ask the reader to wait until they
+complicated manipulations of the data during loading. In the document, I ask the reader to wait until they
 have finished the entire process and promise to provide them with the details.
 
 > The curl commands look complex, but they are explained in detail at the end of the tutorial. For now, we recommend running the commands and running some SQL to analyze the data, and then reading about the data loading details at the end.
@@ -139,21 +139,21 @@ https://docs.starrocks.io/docs/quick_start/[StarRocks Quick Starts^,target="_bla
 
 I love to collaborate with other people. Learning from other people, and sharing my knowledge with others is a central part of who I am.
 When Elastic was a start-up we were "for developers and by developers". Even though I had a marketing title, the Elastic leadership was
-very clear: My job was to make sure that every word on the website was truthful. I loved that. I worked on the content on the website, but
+very clear: My job was to make sure that every word on the website was truthful. I loved that. I worked on the content of the website, but
 most of my time was spent writing blogs, presenting on webinars, and building demos. Some of the content I produced is described in this section.
 
 === Google Anthos
 
 I joined Elastic as the Product Marketing Manager (PMM) for ingest products and Kubernetes. When Google Anthos was being developed
 Google did not have an on-premise logging solution and partnered with Elastic to provide one. I wrote the documentation for the
-integration. Google now has their own logging solution, so the documentation was pulled, here is a
+integration. Google now has a logging solution, so the documentation was pulled, here is a
 https://drive.google.com/file/d/1stnwF87lsOFE_95m-UKQDuZ4vkQosejp/view[PDF^,target="_blank"].
 
 === Kubernetes
 
 I was working the Elastic booth at Kubecon 2018 and almost everyone who came to visit the booth told me that they loved
-Elasticsearch. As the PMM for ingest products I was interested in what agents were popular with the community. All but a
-handful of the people I spoke with were using Fluentd or Fluent Bit to feed Logstash. In order to raise awareness of Elastic
+Elasticsearch. As the PMM for ingest products, I was interested in what agents were popular with the community. All but a
+handful of the people I spoke with were using Fluentd or Fluent Bit to feed Logstash. To raise awareness of Elastic
 agents similar in functionality to Fluentd and Fluent Bit I joined the Kubernetes SIG-Docs and published this guide in the
 Kubernetes documentation.
 
@@ -173,5 +173,5 @@ https://www.elastic.co/customer-success/resources?tab=2[Elastic Support Engineer
 
 Some people prefer a short video when they want an introduction to a new technique. I recorded this to give people an overview of the https://www.youtube.com/watch?v=IO_uXPKQht0[Elastic Kubernetes operator^,target="_blank"].
 
-There are more blogs, videos, and webinars available in the
+There are more blogs, videos, and webinars available on the
 https://www.elastic.co/search/?q=roscigno&size=n_20_n[Elastic search page^,target="_blank"].
