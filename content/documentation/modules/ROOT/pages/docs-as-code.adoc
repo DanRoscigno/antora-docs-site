@@ -132,7 +132,7 @@ image::shared:testSQL.png[Create table from S3]
 === Proof of concept
 
 An implementation of the above is described at
-https://github.com/DanRoscigno/SingleSourceCodeTestingAndDocs/blob/main/README.md[Single-sourcing docs from code^,target="_blank"]
+https://github.com/DanRoscigno/SingleSourceCodeTestingAndDocs/blob/main/README.md[Single-sourcing docs from code^,target="_blank"].
 
 == Reader feedback
 
