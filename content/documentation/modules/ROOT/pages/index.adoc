@@ -12,12 +12,34 @@ Some of the links used are pointing to copies of documents in the Internet Archi
 This is done so that I can link to documents that have been removed from their original location,
 or have been modified.
 
-== Examples
+== Tutorial
 
-=== Preparing data for an anlytical database
+This example is designed to be followed step by step to integrate the database with a specific
+third-party visualization tool.
+
+When I wrote this guide I pulled out the reusable content (the ports used by the database and where to
+find the connection details in the commercial UI) into reusable snippets and these are imported wherever
+needed. Imports have always been available in Asciidoc, but this was missing in Docusaurus until recently.
+
+Key features of this guide:
+
+* Identify the goal and show the end result.
+* Provide a step-by-step procedure.
+* Include all the information necessary to complete the task.
+* Limit links out to download files necessary to implement the integration and a sample dataset used to verify the integration.
+
+The rest of the visualization tool integrations at ClickHouse follow the same pattern.
+
+Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button". I deviated from this because the community often had problems with using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
+
+https://clickhouse.com/docs/en/integrations/superset
+
+== How-To and Explanation
 
 This is a guide for someone who has already gone through the basics of starting the database, creating a
-"Hello World" table and loading a few rows of data.
+"Hello World" table and loading a few rows of data. This document exemplifies one place where I
+combine explanation with a how-to guide. This is meant to both teach someone how to load data, and
+explain what they should be considering while they work through the process.
 
 In the NYPD Complaint Data guide I guide a new user of the ClickHouse analytical database through
 investigating the structure and content of an input file containing a dataset, determining the proper
@@ -54,17 +76,58 @@ data, and then finishes up with some queries and advice on what to learn next.
 
 https://web.archive.org/web/20230317111529/https://clickhouse.com/docs/en/getting-started/example-datasets/nypd_complaint_data[ClickHouse guide to analyzing NYPD complaint data]
 
+== Solution guides
 
-Documentation at Google.com integrating their on-prem Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
+The documentation at Elastic was traditionally product based. This meant that the documentation was split up into these separate sets:
+
+* Search engine
+* Visualization tool
+* Streaming ingest tool
+* Agents
+
+This separation of the documentation meant that the reader had to know which tools they needed, what terminology each of the tools used to describe the same idea, and which tool to pick if there were multiple options for a specific task. This issue hit me personally when I was trying to set up a new feature. I searched for the feature and the search engine documentation came up first in the results, so I followed that guide. I had to use pages of JSON configuration to get the integration working. I was speaking with some of the other writers about how difficult this was to configure, and the writer for the visualization tool told me that there was a button to configure that. This conversation led to regular knowledge sharing among the writers and the course developers so that we could provide end-to-end scenario-based documentation that highlighted the best way to accomplish tasks. There are several solution guides, and I worked on these:
+
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html[Getting started with Observability]
+
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html[Monitor your Kubernetes Infrastructure]
+
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM]
+
+== How-To
+
+I am not a fan of using four lines of data to introduce the reader to a database product capable of
+ingesting and analyzing billions of rows of data or analyzing those billions of rows of data where they
+sit in cloud storage. I replaced the four line CSV file Quick Start at StarRocks with Quick Starts
+that align with the needs of the community:
+
+* Joining data from different tables
+* Separation of storage and compute
+* Analyzing data in Apache Iceberg
+* Analyzing data in Apache Hudi
+
+There is some complexity to configuring the integrations with cloud storage, Apache Iceberg, and Apache Hudi. To make this easier for the reader I wrote Docker compose files to deploy MinIO, Iceberg, and Hudi. I think that this is appropriate, as the reader that wants to use external storage with StarRocks is likely familiar with the external storage. In addition to the compose files I documented the settings necessary, and in the case of the Hudi integration I submitted a pull request to the Hudi maintainers to improve their compose-based tutorial.
+
+The "Basics" Quick Start is a step-by-step guide with no explanation until the end. There are some
+complicated manipulations of the data during loading. In the document I ask the reader to wait until they
+have finished the entire process and promise to provide them with the details.
+
+> The curl commands look complex, but they are explained in detail at the end of the tutorial. For now, we recommend running the commands and running some SQL to analyze the data, and then reading about the data loading details at the end.
+
+https://docs.starrocks.io/docs/quick_start/[StarRocks Quick Starts]
+
+== Mess
+
+Documentation at Google.com integrating their on-premise Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
 
 Tutorial at the Kubernetes website This was removed from the Kubernetes website when we changed the Elastic license.  Webarchive is linked, you can download and open in a browser.  Markdown is in this pull request.
 
+== How-To
 == Blogs
 Get System Logs and Metrics into Elasticsearch
-Upgrading the Elastic Stack: Planning for succes
+Upgrading the Elastic Stack: Planning for success
 Integrating JMS with Elasticsearch Service in Elastic Cloud using Logstash
 Kubernetes and Docker overview of auto discovery and video demo, and the associated GitHub repo.  I think this may be the first thing I wrote at Elastic.
-Monitoring an app deplyed in Kubernetes
+Monitoring an app deployed in Kubernetes
 Logs and Metrics with Beats System Modules
 Documentation at third party sites
 
