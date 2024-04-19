@@ -1,9 +1,5 @@
 = Sample Documentation
 
-April 18th 2024
-
-Hi! This is a WIP. I had never heard of Antora before and decided to give it a whirl.
-
 == Overview
 
 Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past six years. These are representative samples, not everything that I have worked on.
@@ -32,7 +28,7 @@ The rest of the visualization tool integrations at ClickHouse follow the same pa
 
 Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button". I deviated from this because the community often had problems with using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
 
-https://clickhouse.com/docs/en/integrations/superset
+https://clickhouse.com/docs/en/integrations/superset[Superset Integration^,target="_blank"]
 
 == How-To and Explanation
 
@@ -61,20 +57,22 @@ Here is an example from the NYPD Complaint Data document that I believe is a goo
 a system for learning about the data, and properly configuring the database table to store the data
 efficiently:
 
-> In order to figure out what types should be used for the fields it is necessary to know what the data looks like. For example, the field JURISDICTION_CODE is a numeric: should it be a UInt8, or an Enum, or is Float64 appropriate?.footnote:1[The query is not shown here]
+NOTE: The queries are not shown in the excerpt.
+
+> In order to figure out what types should be used for the fields it is necessary to know what the data looks like. For example, the field JURISDICTION_CODE is a numeric: should it be a UInt8, or an Enum, or is Float64 appropriate?
 >
 > The query response shows that the JURISDICTION_CODE fits well in a UInt8.
 >
 > Similarly, look at some of the String fields and see if they are well suited to being DateTime or LowCardinality(String) fields.
 >
-> For example, the field PARKS_NM is described as "Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)". The names of parks in New York City may be a good candidate for a LowCardinality(String):.footnote:1[]
+> For example, the field PARKS_NM is described as "Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)". The names of parks in New York City may be a good candidate for a LowCardinality(String):
 >
 > The dataset in use at the time of writing has only a few hundred distinct parks and playgrounds in the PARK_NM column. This is a small number based on the LowCardinality recommendation to stay below 10,000 distinct strings in a LowCardinality(String) field.
 
 The document continues to teach a few more very important techniques for analyzing and manipulating
 data, and then finishes up with some queries and advice on what to learn next.
 
-https://web.archive.org/web/20230317111529/https://clickhouse.com/docs/en/getting-started/example-datasets/nypd_complaint_data[ClickHouse guide to analyzing NYPD complaint data]
+https://web.archive.org/web/20230317111529/https://clickhouse.com/docs/en/getting-started/example-datasets/nypd_complaint_data[ClickHouse guide to analyzing NYPD complaint data^,target="_blank"]
 
 == Solution guides
 
@@ -87,13 +85,13 @@ The documentation at Elastic was traditionally product based. This meant that th
 
 This separation of the documentation meant that the reader had to know which tools they needed, what terminology each of the tools used to describe the same idea, and which tool to pick if there were multiple options for a specific task. This issue hit me personally when I was trying to set up a new feature. I searched for the feature and the search engine documentation came up first in the results, so I followed that guide. I had to use pages of JSON configuration to get the integration working. I was speaking with some of the other writers about how difficult this was to configure, and the writer for the visualization tool told me that there was a button to configure that. This conversation led to regular knowledge sharing among the writers and the course developers so that we could provide end-to-end scenario-based documentation that highlighted the best way to accomplish tasks. There are several solution guides, and I worked on these:
 
-https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html[Getting started with Observability]
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html[Getting started with Observability^,target="_blank"]
 
-https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html[Monitor your Kubernetes Infrastructure]
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-kubernetes.html[Monitor your Kubernetes Infrastructure^,target="_blank"]
 
-https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM]
+https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-siem-security.html[Use Elastic Security for SIEM^,target="_blank"]
 
-== How-To
+== Use-case based How-To guides
 
 I am not a fan of using four lines of data to introduce the reader to a database product capable of
 ingesting and analyzing billions of rows of data or analyzing those billions of rows of data where they
@@ -135,12 +133,45 @@ This is the beginning of one data record. The date is in `MM/DD/YYYY` format, an
 
 The rest of the Quick Starts have complex configuration files and commands explained in detail without sending the reader off to reference documentation to learn about a configuration item. I realize that there is a risk that the parameters may change in future versions of StarRocks, but these Quick Starts and several other guide-type documents are tested with every release. The short-term plan is to use snippet files to include the configuration material from the reference sources.
 
-https://docs.starrocks.io/docs/quick_start/[StarRocks Quick Starts]
+https://docs.starrocks.io/docs/quick_start/[StarRocks Quick Starts^,target="_blank"]
 
-== Google Anthos
+== Writing before I had the technical writer title
 
-== Kubernetes
+I love to collaborate with other people. Learning from other people, and sharing my knowledge with others is a central part of who I am.
+When Elastic was a start-up we were "for developers and by developers". Even though I had a marketing title, the Elastic leadership was
+very clear: My job was to make sure that every word on the website was truthful. I loved that. I worked on the content on the website, but
+most of my time was spent writing blogs, presenting on webinars, and building demos. Some of the content I produced is described in this section.
 
-== Blogs
+=== Google Anthos
 
-== Videos
+I joined Elastic as the Product Marketing Manager (PMM) for ingest products and Kubernetes. When Google Anthos was being developed
+Google did not have an on-premise logging solution and partnered with Elastic to provide one. I wrote the documentation for the
+integration. Google now has their own logging solution, so the documentation was pulled, here is a
+https://drive.google.com/file/d/1stnwF87lsOFE_95m-UKQDuZ4vkQosejp/view[PDF^,target="_blank"].
+
+=== Kubernetes
+
+I was working the Elastic booth at Kubecon 2018 and almost everyone who came to visit the booth told me that they loved
+Elasticsearch. As the PMM for ingest products I was interested in what agents were popular with the community. All but a
+handful of the people I spoke with were using Fluentd or Fluent Bit to feed Logstash. In order to raise awareness of Elastic
+agents similar in functionality to Fluentd and Fluent Bit I joined the Kubernetes SIG-Docs and published this guide in the
+Kubernetes documentation.
+
+https://web.archive.org/web/20201028193405/https://kubernetes.io/docs/tutorials/stateless-application/guestbook-logs-metrics-with-elk/[Logs and Metrics with ELK^,target="_blank"]
+
+=== Customer Success
+
+I worked in operations at AT&T for a few years, and then as an IBM services engineer doing similar work for another ten years.
+Backups and upgrades are so important. I published some advice on this in this Elastic https://www.elastic.co/customer-success/how-to-upgrade?tab=1#step-by-step-upgrading[Customer Success guide^,target="_blank"].
+
+You might be familiar with the internal docs that support organizations often have. I believe that when we publish advice from support
+engineers we applaud their hard work, and we save the community from making mistakes that cause outages. This page contains many
+nuggets of advice that I collected and documented from the
+https://www.elastic.co/customer-success/resources?tab=2[Elastic Support Engineers^,target="_blank"].
+
+=== Videos
+
+Some people prefer a short video when they want an introduction to a new technique. I recorded this to give people an overview of the https://www.youtube.com/watch?v=IO_uXPKQht0[Elastic Kubernetes operator^,target="_blank"].
+
+There are more blogs, videos, and webinars available in the
+https://www.elastic.co/search/?q=roscigno&size=n_20_n[Elastic search page^,target="_blank"].
