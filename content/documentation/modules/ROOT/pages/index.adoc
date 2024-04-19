@@ -113,34 +113,34 @@ have finished the entire process and promise to provide them with the details.
 
 > The curl commands look complex, but they are explained in detail at the end of the tutorial. For now, we recommend running the commands and running some SQL to analyze the data, and then reading about the data loading details at the end.
 
+At the end of the document is a summary, and then the promised explanation of the `curl` parameters. It is a long explanation, so I have only included the most complex part of it here:
+
+> *The columns line*
+>
+This is the beginning of one data record. The date is in `MM/DD/YYYY` format, and the time is `HH:MI`. Since DATETIME is generally `YYYY-MM-DD HH:MI:SS` we need to transform this data.
+>
+> `08/05/2014,9:10,BRONX,10469,40.8733019,-73.8536375,"(40.8733019, -73.8536375)",`
+>
+> This is the beginning of the columns: parameter:
+>
+> `-H "columns:tmp_CRASH_DATE, tmp_CRASH_TIME, CRASH_DATE=str_to_date(concat_ws(' ', tmp_CRASH_DATE, tmp_CRASH_TIME), '%m/%d/%Y %H:%i')`
+>
+> This instructs StarRocks to:
+>
+> * Assign the content of the first column of the CSV file to `tmp_CRASH_DATE`
+> * Assign the content of the second column of the CSV file to `tmp_CRASH_TIME`
+> * `concat_ws()` concatenates `tmp_CRASH_DATE` and `tmp_CRASH_TIME` together with a space between them
+> * str_to_date() creates a DATETIME from the concatenated string
+> * store the resulting DATETIME in the column `CRASH_DATE`
+
+The rest of the Quick Starts have complex configuration files and commands explained in detail without sending the reader off to reference documentation to learn about a configuration item. I realize that there is a risk that the parameters may change in future versions of StarRocks, but these Quick Starts and several other guide-type documents are tested with every release. The short-term plan is to use snippet files to include the configuration material from the reference sources.
+
 https://docs.starrocks.io/docs/quick_start/[StarRocks Quick Starts]
 
-== Mess
+== Google Anthos
 
-Documentation at Google.com integrating their on-premise Kubernetes engine with the Elastic Stack.  This was published as part of the Anthos launch, and was highlighted at the Elastic Observability conference by Google when they presented in 2021.
+== Kubernetes
 
-Tutorial at the Kubernetes website This was removed from the Kubernetes website when we changed the Elastic license.  Webarchive is linked, you can download and open in a browser.  Markdown is in this pull request.
-
-== How-To
 == Blogs
-Get System Logs and Metrics into Elasticsearch
-Upgrading the Elastic Stack: Planning for success
-Integrating JMS with Elasticsearch Service in Elastic Cloud using Logstash
-Kubernetes and Docker overview of auto discovery and video demo, and the associated GitHub repo.  I think this may be the first thing I wrote at Elastic.
-Monitoring an app deployed in Kubernetes
-Logs and Metrics with Beats System Modules
-Documentation at third party sites
 
-
-== Elastic Docs
-New Elastic Cloud tutorial built with Cloud tech writers and Cloud PM around using a development language client.
-
-Customer success pages at elastic.co. These pages started out as a text dump of how I approached consulting engagements when I worked in services designing fault and performance management systems for customers.  It has grown to become customer journey guides, tips from support, videos from the Elastic education organization, and onboarding advice. There is quite a bit of fluff added in here by the Marketing folks after I left Elastic, but the content written with the Support Engineers and the content around planning upgrades is legit.
-
-== Poster
-
-A poster that I used to teach IBM SAs and customers about using Machine Learning with observability data.
-
-
-
-
+== Videos
