@@ -123,7 +123,7 @@ https://github.com/DanRoscigno/docs/blob/6d6fcf905162adf80bd094cb9dd133a5c557bdd
 ----
 
 NOTE: This is `docusaurus-theme-github-codeblock` syntax, not Asciidoc. With Asciidoc I would include content by
-https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions/[tagged regions^,target="_blank"].
+https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions/[tagged regions^,target="_blank"]. Similarly, with Restructured Text I would us remote code blocks with https://github.com/lsst-sqre/documenteer/blob/main/src/documenteer/ext/remotecodeblock.py#L43[`start-after` and `end-before`].
 
 In Docusaurus this renders as:
 
