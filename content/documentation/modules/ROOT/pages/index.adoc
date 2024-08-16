@@ -105,9 +105,7 @@ that align with the needs of the community:
 
 There is some complexity to configuring the integrations with cloud storage, Apache Iceberg, and Apache Hudi. To make this easier for the reader I wrote Docker compose files to deploy MinIO, Iceberg, and Hudi. I think that this is appropriate, as the reader who wants to use external storage with StarRocks is likely familiar with the external storage. In addition to the compose files I documented the settings necessary, and in the case of the Hudi integration I submitted a pull request to the Hudi maintainers to improve their compose-based tutorial.
 
-The "Basics" Quick Start is a step-by-step guide with no explanation until the end. There are some
-complicated manipulations of the data during loading. In the document, I ask the reader to wait until they
-have finished the entire process and promise to provide them with the details.
+The "Basics" Quick Start is a step-by-step guide with no explanation until the end. There are some complicated data manipulations during loading. In the document, I ask the reader to wait until they have finished the entire process and promise to provide them with the details. Because the complex technique included in this How To guide contains a detailed section about how to deal with a common data problem, (date and time stored in non-standard formats), the content should be moved to a How To document dedicated to that problem. This would allow readers to find the content without reading a long guide about setting up the database and loading datasets. The "Basics" How To could then link to a "Reformatting date and time data" How To.
 
 > The curl commands look complex, but they are explained in detail at the end of the tutorial. For now, we recommend running the commands and running some SQL to analyze the data, and then reading about the data loading details at the end.
 
