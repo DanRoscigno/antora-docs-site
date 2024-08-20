@@ -1,0 +1,87 @@
+= Tools for writers
+
+== LanguageTool
+
+Grammar, style, and spell checking with https://marketplace.visualstudio.com/items?itemName=davidlday.languagetool-linter[LanguageTool Linter].
+
+I switched from Grammarly to LanguageTool to more easily control my settings. I can now
+add custom spelling entries to my dictionary from VS Code easily. I am running the server
+on my laptop using Docker.
+
+I find the https://dev.languagetool.org/finding-errors-using-n-gram-data.html[ngram support] to be helpful
+
+I run LanguageTool in Docker. Erick van Leeuwen provides information for running https://github.com/Erikvl87/docker-languagetool[LanguageTool with Docker Compose].
+
+The VS Code extension to use is [LanguageTool](https://marketplace.visualstudio.com/items?itemName=davidlday.languagetool-linter)
+
+Here are the config entries for VS Code:
+
+```json
+    "editor.formatOnType": true,
+    "languageToolLinter.languageTool.language": "en-US",
+    "languageToolLinter.languageTool.motherTongue": "en-US",
+    "languageToolLinter.lintOnChange": true,
+    "languageToolLinter.lintOnOpen": true,
+```
+
+At the end of this README is the `docker-compose.yml` that I use, it is based on Eric van Leeuwen's (linked above). I added some configuration for my preferences. These are described below.
+
+The compose file passes the environment to `start.sh` (maintained
+by https://github.com/Erikvl87/docker-languagetool[erikvl87]), and any env vars that begin with `langtool_` are
+considered to be entries for a configuration file that will be
+passed to the `langtool` server.
+
+If you see in the LanguageTool docs "Add `disabledRuleIds= a comma separated list
+of Rule IDs to ignore`, then the entry in the docker compose file
+to disable the WHITESPACE_RULE and the EN_UNPAIRED_BRACKETS rule would be:
+
+.Disable Whitespace and unpaired bracket rules
+[source, yaml]
+----
+      - langtool_disabledRuleIds=WHITESPACE_RULE,EN_UNPAIRED_BRACKETS
+----
+
+I disable the WHITESPACE_RULE as it marks every line of a Markdown
+table as a problem if you use more than one space to pad entries
+(I like to line the `|` symbols up on each row with the longest
+entry in a column).
+
+I disable the EN_UNPAIRED_BRACKETS as it complains unpaired square brackets used for Asciidoc URLs (spaces in the link text trigger the rule).
+
+The rule IDs can be found in VS Code in the problems view.
+
+Similarly, the env line to specify the location of the ngrams is:
+
+.Enable ngrams support
+[source, yaml]
+----
+      - langtool_languageModel=/ngrams/
+----
+
+This assumes that you mount the ngrams from your host machine to
+`/ngrams` in the container. I do so like this:
+
+.Mount the ngrams volume
+[source, yaml]
+----
+    volumes:
+      - /Users/droscign/ngrams:/ngrams
+----
+
+.docker-compose.yaml
+[source, yaml]
+----
+services:
+  languagetool:
+    image: erikvl87/languagetool
+    container_name: languagetool
+    ports:
+      - 8081:8010  # Using default port from the image
+    environment:
+      - langtool_languageModel=/ngrams/
+      - langtool_disabledRuleIds=WHITESPACE_RULE,EN_UNPAIRED_BRACKETS
+      - Java_Xms=512m  # OPTIONAL: Setting a minimal Java heap size of 512 mib
+      - Java_Xmx=1g  # OPTIONAL: Setting a maximum Java heap size of 1 Gib
+    volumes:
+      - /Users/droscign/ngrams:/ngrams
+----

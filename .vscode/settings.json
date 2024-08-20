@@ -1,3 +1,9 @@
 {
-    "asciidoc.antora.enableAntoraSupport": true
+    "asciidoc.antora.enableAntoraSupport": true,
+    "languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+        "langtool",
+        "languagemodel",
+        "ngrams",
+        "yaml"
+    ]
 }
