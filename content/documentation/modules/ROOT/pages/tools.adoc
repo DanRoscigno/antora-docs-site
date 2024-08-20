@@ -12,7 +12,7 @@ I find the https://dev.languagetool.org/finding-errors-using-n-gram-data.html[ng
 
 I run LanguageTool in Docker. Erick van Leeuwen provides information for running https://github.com/Erikvl87/docker-languagetool[LanguageTool with Docker Compose].
 
-The VS Code extension to use is [LanguageTool](https://marketplace.visualstudio.com/items?itemName=davidlday.languagetool-linter)
+The VS Code extension to use is https://marketplace.visualstudio.com/items?itemName=davidlday.languagetool-linter[LanguageTool].
 
 Here are the config entries for VS Code:
 
@@ -29,26 +29,17 @@ At the end of this README is the `docker-compose.yml` that I use, it is based on
 The compose file passes the environment to `start.sh` (maintained
 by https://github.com/Erikvl87/docker-languagetool[erikvl87]), and any env vars that begin with `langtool_` are
 considered to be entries for a configuration file that will be
-passed to the `langtool` server.
+passed to the `langtool` server. Here is an example:
 
-If you see in the LanguageTool docs "Add `disabledRuleIds= a comma separated list
-of Rule IDs to ignore`, then the entry in the docker compose file
-to disable the WHITESPACE_RULE and the EN_UNPAIRED_BRACKETS rule would be:
+I use whitespace to line up the columns of Markdown tables. I know that this is not necessary, but it is a habit that I choose to keep. Because of this, I see errors about whitespace in the VS Code problems list. I am also seeing problems related to unmatched brackets when editing Asciidoc files as in Asciidoc the link text is placed in square brackets, and linked text often has whitespace (LanguageTool must be expecting a URL, which has no space). To turn off rules, copy the rule IDs from the problems list (rule IDs are all caps with underscores replacing whitespace) and set the environment variable `langtool_disabledRuleIds` to the comma separated list of rules to turn off.
+
+In VS Code I am seeing many complaints about whitespace in MArkdown tables. To turn off the `WHITESPACE_RULE` and the `EN_UNPAIRED_BRACKETS` rules the environment setting would be:
 
 .Disable Whitespace and unpaired bracket rules
 [source, yaml]
 ----
       - langtool_disabledRuleIds=WHITESPACE_RULE,EN_UNPAIRED_BRACKETS
 ----
-
-I disable the WHITESPACE_RULE as it marks every line of a Markdown
-table as a problem if you use more than one space to pad entries
-(I like to line the `|` symbols up on each row with the longest
-entry in a column).
-
-I disable the EN_UNPAIRED_BRACKETS as it complains unpaired square brackets used for Asciidoc URLs (spaces in the link text trigger the rule).
-
-The rule IDs can be found in VS Code in the problems view.
 
 Similarly, the env line to specify the location of the ngrams is:
 
