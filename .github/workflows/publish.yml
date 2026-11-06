@@ -26,11 +26,11 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v7
       with:
-        node-version: '24'
+        node-version: '26'
     - name: Install Antora
-      run: npm i antora@3.1.7
+      run: npm i antora@3.2
     - name: Generate Site
-      run: npx gulp bundle && npx antora antora-playbook.yml
+      run: npx antora antora-playbook.yml
     - name: Upload Artifacts
       uses: actions/upload-pages-artifact@v5.0.0
       with:
