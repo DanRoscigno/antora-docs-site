@@ -65,7 +65,7 @@ in the docs. Both of these issues were related to key features that the
 community and customers were using in production.
 
 After retesting the steps in the docs and confirming that the issues were
-accurate I looked through the release notes and found the related breaking
+accurate, I looked through the release notes and found the related breaking
 changes.
 
 Waiting for the community and customers to find the bugs in the docs or bugs in
