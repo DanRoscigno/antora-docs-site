@@ -172,4 +172,4 @@ https://www.elastic.co/customer-success/resources?tab=2[Elastic Support Engineer
 Some people prefer a short video when they want an introduction to a new technique. I recorded this to give people an overview of the https://www.youtube.com/watch?v=IO_uXPKQht0[Elastic Kubernetes operator^,target="_blank"].
 
 There are more blogs, videos, and webinars available on the
-https://www.elastic.co/search/?q=roscigno&size=n_20_n[Elastic search page^,target="_blank"].
+https://search.elastic.co/?q=roscigno[Elastic search page^,target="_blank"].
