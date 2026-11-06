@@ -1,4 +1,7 @@
 # antora-playbook.yml
+asciidoc:
+  attributes:
+    page-pagination: ''
 site:
   robots: allow
   start_page: sample-docs::index.adoc
