@@ -1,2 +1,2 @@
-* xref:index.adoc#_welcome[Documantation Samples]
+* xref:index.adoc#_welcome[Documentation samples]
 * xref:docs-as-code.adoc[Docs-As-Code]

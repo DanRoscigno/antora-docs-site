@@ -1,4 +1,4 @@
-= Sample Documentation
+= Documentation samples
 
 == Overview
 
