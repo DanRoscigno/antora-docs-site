@@ -2,9 +2,9 @@
 
 == Overview
 
-Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past six years. These are representative samples, not everything that I have worked on.
+Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past eight years. These are representative samples, not everything that I have worked on.
 
-Some of the links used are pointing to copies of documents in the Internet Archive Wayback Machine.
+Some links used are pointing to copies of documents in the Internet Archive Wayback Machine.
 This is done so that I can link to documents that have been removed from their original location,
 or have been modified.
 
@@ -15,7 +15,7 @@ third-party visualization tool.
 
 When I wrote this guide, I pulled out the reusable content (the ports used by the database and where to
 find the connection details in the commercial UI) into reusable snippets. These are now imported wherever
-needed. Imports have always been available in Asciidoc, but this was missing in Docusaurus until recently.
+needed. Imports have always been available in AsciiDoc, but this was missing in Docusaurus until recently.
 
 Key features of this guide:
 
@@ -26,32 +26,32 @@ Key features of this guide:
 
 The rest of the visualization tool integrations at ClickHouse follow the same pattern.
 
-Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button". I deviated from this because the community often had problems using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
+Typically, integration documentation would be limited to "install the driver, add the connection string, press the test button." I deviated from this because the community often had problems using the integration once the connection was established. Deflecting issues reported in Slack and to the support desk is important to both the users and the support team.
 
 https://clickhouse.com/docs/en/integrations/superset[Superset Integration^,target="_blank"]
 
-== How-To and Explanation
+== How-to and explanation
 
 This is a guide for someone who has already gone through the basics of starting the database, creating a
 "Hello World" table, and loading a few rows of data. This document exemplifies one place where I
 combine explanation with a how-to guide. This is meant to both teach someone how to load data and
 explain what they should be considering while they work through the process.
 
-In the NYPD Complaint Data documentation, I guide a new user of the ClickHouse analytical database through
+In the New York Police Department (NYPD) Complaint Data documentation, I guide a new user of the ClickHouse analytical database through
 investigating the structure and content of an input file containing a dataset, determining the proper
 schema for the database table that the data will be stored in, how to transform the data while
 ingesting it, and how to run some interesting queries against that data.
 
-Most guides in this product space tell the reader "Type this, click that, clean up". I find that
+Most guides in this product space tell the reader "Type this, click that, clean up." I find that
 type of guide to be boring, and I wonder if the method presented is a "good" method or the simplest
 for the author to write.
 
-Database guides often use very simple datasets that are guaranteed to work. This is necessary for the
+Database guides often use simple datasets that are guaranteed to work. This is necessary for the
 very first tutorial-type content designed to get the product installed and the very first table created.
 Beyond that point, the reader needs to learn about how to understand their data and the database so
 that they can make proper decisions. When I wrote this guide I had almost no experience with the
-product. My mentor recommended that I "Write down everything that I learn while working through the
-process". This first example is the result of that advice.
+product. My mentor recommended that I "Write down everything learned while working through the
+process." This first example is the result of that advice.
 
 Here is an example from the NYPD Complaint Data document that I believe is a good way to present
 a system for learning about the data, and properly configuring the database table to store the data
@@ -65,7 +65,7 @@ NOTE: The queries are not shown in the excerpt.
 >
 > Similarly, look at some of the String fields and see if they are well suited to being DateTime or LowCardinality(String) fields.
 >
-> For example, the field PARKS_NM is described as "Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)". The names of parks in New York City may be a good candidate for a LowCardinality(String):
+> For example, the field PARKS_NM is described as "Name of NYC park, playground or greenspace of occurrence, if applicable (state parks are not included)." The names of parks in New York City may be a good candidate for a LowCardinality(String):
 >
 > The dataset in use at the time of writing has only a few hundred distinct parks and playgrounds in the PARK_NM column. This is a small number based on the LowCardinality recommendation to stay below 10,000 distinct strings in a LowCardinality(String) field.
 
@@ -149,7 +149,7 @@ https://drive.google.com/file/d/1stnwF87lsOFE_95m-UKQDuZ4vkQosejp/view[PDF^,targ
 
 === Kubernetes
 
-I was working the Elastic booth at Kubecon 2018 and almost everyone who came to visit the booth told me that they loved
+I was working the Elastic booth at KubeCon 2018 and almost everyone who came to visit the booth told me that they loved
 Elasticsearch. As the PMM for ingest products, I was interested in what agents were popular with the community. All but a
 handful of the people I spoke with were using Fluentd or Fluent Bit to feed Logstash. To raise awareness of Elastic
 agents similar in functionality to Fluentd and Fluent Bit I joined the Kubernetes SIG-Docs and published this guide in the
