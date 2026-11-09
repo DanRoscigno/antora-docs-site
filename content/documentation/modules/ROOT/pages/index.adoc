@@ -2,7 +2,7 @@
 
 == Overview
 
-Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past six years. These are representative samples, not everything that I have worked on.
+Included here are a few of the documents that I have written at StarRocks, ClickHouse, and Elastic over the past eight years. These are representative samples, not everything that I have worked on.
 
 Some links used are pointing to copies of documents in the Internet Archive Wayback Machine.
 This is done so that I can link to documents that have been removed from their original location,
